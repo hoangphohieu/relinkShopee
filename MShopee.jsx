@@ -1,5 +1,5 @@
 var theFiles = File.openDialog("please select files", "*.psd;*.tif;*.jpg;*.png", true)
-var folderSaveJPG = Folder("~/Desktop/save a4");
+var folderSaveJPG = Folder("~/Desktop/file phoneCase");
 if (!folderSaveJPG.exists) {
       folderSaveJPG.create();
 }
@@ -10,12 +10,9 @@ jpgOption.quality = 11;
 
 if (theFiles) {
       for (var m = 0; m < theFiles.length; m++) {
-            // Replace SmartObject
-            // theLayer = replaceContents(theFiles[m], theLayer);
             var theNewNameSelect = theFiles[m].name.match(/(.*)\.[^\.]+$/)[1];
-            // alert(theFiles[m].name)
-
-            var customerChildren = Folder("~/Desktop/save customer").getFiles("*.tif");
+            var customerChildren = Folder("~/Desktop/mockup phoneCase").getFiles("*.tif");
+            Folder("~/Desktop/file phoneCase/" + theNewNameSelect).create();
             for (var i = 0; i < customerChildren.length; i++) {
                   app.open(File(customerChildren[i]));
                   app.activeDocument.activeLayer = app.activeDocument.artLayers['aaaa'];
@@ -27,12 +24,12 @@ if (theFiles) {
                   var idPgNm = charIDToTypeID("PgNm");
                   desc3.putInteger(idPgNm, 1);
                   executeAction(idplacedLayerReplaceContents, desc3, DialogModes.NO);
-                  app.activeDocument.saveAs(Folder("~/Desktop/save a4/" + theNewNameSelect + "-" + theNewNameDesign + ".jpg"), jpgOption, true, Extension.LOWERCASE);
+                  app.activeDocument.saveAs(Folder("~/Desktop/file phoneCase/" + theNewNameSelect + "/" + theNewNameSelect + "-" + theNewNameDesign + ".jpg"), jpgOption, true, Extension.LOWERCASE);
                   app.activeDocument.close(SaveOptions.DONOTSAVECHANGES);
             }
-            // Save JPG
-            // myDocument.saveAs((new File(thePath + "/" + theName + "_" +
-            //       theNewName + ".psd")), psdOpts, true);
+            app.open(File(theFiles[m]));
+            app.activeDocument.saveAs(Folder("~/Desktop/file phoneCase/" + theNewNameSelect + "/" + theNewNameSelect + ".jpg"), jpgOption, true, Extension.LOWERCASE);
+            app.activeDocument.close(SaveOptions.DONOTSAVECHANGES);
       }
 }
 
