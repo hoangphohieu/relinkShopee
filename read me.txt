@@ -1,0 +1,10 @@
+﻿• Desktop phải chứa thư mục "mockup phoneCase" chứa các file mockup
+• chạy file MShopee.jsx
+• chọn ảnh cần làm mockup (chỉ được 2 file đuôi .jpg và .png)
+• đợi làm xong
+• ảnh lưu trong thư mục "file phoneCase"
+
+=> lưu ý:
+• file mockup phải là đuôi .tif
+• layer có tên "aaaa" phải ở ngoài để relink 
+(ở ngoài là không được nằm trong thư mục nào, tắt mắt đi vẫn được)
