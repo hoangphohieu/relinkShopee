@@ -55,7 +55,14 @@ if (theFiles) {
                   var idPgNm = charIDToTypeID("PgNm");
                   desc3.putInteger(idPgNm, 1);
                   executeAction(idplacedLayerReplaceContents, desc3, DialogModes.NO);
-                  app.activeDocument.saveAs(Folder("~/Desktop/file phoneCase/" + theNewNameSelect + "/" + theNewNameSelect + "-" + theNewNameDesign + ".jpg"), jpgOption, true, Extension.LOWERCASE); // lưu file mockup đã relink
+
+                  var options = new ExportOptionsSaveForWeb(); // save for web cho nhẹ
+                  options.quality = 100;
+                  options.format = SaveDocumentType.JPEG;
+                  options.optimized = true;
+                  app.activeDocument.exportDocument(Folder("~/Desktop/file phoneCase/" + theNewNameSelect + "/" + theNewNameSelect + "-" + theNewNameDesign + ".jpg"), ExportType.SAVEFORWEB, options);
+
+                  // app.activeDocument.saveAs(Folder("~/Desktop/file phoneCase/" + theNewNameSelect + "/" + theNewNameSelect + "-" + theNewNameDesign + ".jpg"), jpgOption, true, Extension.LOWERCASE); // lưu file mockup đã relink
                   app.activeDocument.close(SaveOptions.DONOTSAVECHANGES);// đóng file mockup lại, chuyển sang làm file mockup tiếp thep
             }
             app.open(File(theFiles[m])); // 61-63: lưu file design vào cùng thư mục luôn
